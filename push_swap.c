@@ -182,9 +182,9 @@ void fill_list(int *arr,int size, snode **head)
 }
 void start_the_turk(snode **head1, snode **head2)
 {
-	pb(head1,head2);
+	pb(head1,head2,true);
 	if((*head2)->value >(*head2)->next->value)
-		sb(head2);
+		sb(*head2,true);
 	
 }
 

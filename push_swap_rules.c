@@ -12,7 +12,7 @@
 
 #include "push_swap_utils.h" 
 
-void sa(snode **head)
+void sa(snode **head, bool print)
 {
 	snode	*tmpa;
 	snode	*tmpb;
@@ -28,8 +28,12 @@ void sa(snode **head)
 	tmpb->prev = tmpa->prev;
 	tmpa->prev = tmpb;
 	*head = tmpb;
+	if (print)
+	{
+		write(1, "sa\n", 3);
+	}
 }
-void sb(snode **head)
+void sb(snode **head, bool print)
 {
 	snode	*tmpa;
 	snode	*tmpb;
@@ -45,19 +49,28 @@ void sb(snode **head)
 	tmpb->prev = tmpa->prev;
 	tmpa->prev = tmpb;
 	*head = tmpb;
+	if (print)
+	{
+		write(1, "sb\n", 3);
+	}
 }
-void ss(snode **head1, snode **head2)
+void ss(snode **head1, snode **head2, bool print)
 {
 	if(!head1 || !head2)
 		return ;
-	sa(head1);
-	sb(head2);
-}void rra(snode **head1)
+	sa(head1, false);
+	sb(head2, false);
+	if (print)
+	{
+		write(1, "ss\n", 3);
+	}
+}
+void rra(snode **head1)
 {
 	snode	*slast;
 	snode	*flast;
 
-	if (!head1 || !*head1 || !(*head1)->next)
+	if (!head1 || !*head1 || !(*head1)->next, bool print)
 		return ;
 	flast = *head1;
 	while(flast->next->next)
@@ -70,8 +83,12 @@ void ss(snode **head1, snode **head2)
 	slast->next = *head1;
 	(*head1)->prev = slast;
 	*head1 = slast;
+	if (print)
+	{
+		write(1, "rra\n", 4);
+	}
 }
-void pa(snode **head1, snode **head2)
+void pa(snode **head1, snode **head2, bool print)
 {
 	snode	*tmpa;
 
@@ -86,8 +103,12 @@ void pa(snode **head1, snode **head2)
 	if (*head1)
 		(*head1)->prev = tmpa;
 	*head1 = tmpa;
+	if (print)
+	{
+		write(1, "pa\n", 3);
+	}
 }
-void pb(snode **head1, snode **head2)
+void pb(snode **head1, snode **head2, bool print)
 {
 	snode	*tmpb;
 
@@ -102,8 +123,12 @@ void pb(snode **head1, snode **head2)
 	if(*head2)
 		(*head2)->prev = tmpb;
 	*head2 = tmpb;
+	if (print)
+	{
+		write(1, "pb\n", 3);
+	}
 }
-void ra(snode **head1)
+void ra(snode **head1, bool print)
 {
 	snode	*first;
 	snode	*last;
@@ -119,8 +144,12 @@ void ra(snode **head1)
 	first->next = NULL;
 	last->next = first;
 	first->prev = last;
+	if (print)
+	{
+		write(1, "ra\n", 3);
+	}
 }
-void rb(snode **head2)
+void rb(snode **head2, bool print)
 {
 	snode	*first;
 	snode	*last;
@@ -136,13 +165,17 @@ void rb(snode **head2)
 	first->next = NULL;
 	last->next = first;
 	first->prev = last;
+	if (print)
+	{
+		write(1, "rb\n", 3);
+	}
 }
 void	rr(snode **head1, snode **head2)
 {
-	rb(head2);
-	ra(head1);
+	rb(head2, false);
+	ra(head1, false);
 }
-void rra(snode **head1)
+void rra(snode **head1, bool print)
 {
 	snode	*slast;
 	snode	*flast;
@@ -160,8 +193,12 @@ void rra(snode **head1)
 	flast->next = NULL;
 	*head1 = slast;
 	slast->prev = NULL;
+	if (print)
+	{
+		write(1, "rra\n", 4);
+	}
 }
-void rrb(snode **head1)
+void rrb(snode **head1, bool print)
 {
 	snode	*slast;
 	snode	*flast;
@@ -179,9 +216,17 @@ void rrb(snode **head1)
 	flast->next = NULL;
 	*head1 = slast;
 	slast->prev = NULL;
+	if (print)
+	{
+		write(1, "rrb\n", 4);
+	}
 }
-void rrr(snode **head1,snode **head2)
+void rrr(snode **head1,snode **head2, bool print)
 {
-	rra(head1);
-	rrb(head2);
+	rra(head1, false);
+	rrb(head2, false);
+	if (print)
+	{
+		write(1, "rrr\n", 4);
+	}
 }

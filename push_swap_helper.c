@@ -62,31 +62,94 @@ snode *find_min(snode **heada)
 	return (min_node);
 	
 }
-void sort_3(snode **head)
+snode *find_second_min(snode **head)
 {
-	int count;
-	snode *node;
+	int		min;
+	int		second_min;
+	snode	*node;
+	snode	*min_node;
+	snode	*second_min_node;
+
 	node = *head;
+	min_node = find_min(head);
+	min = min_node->value;
+	second_min_node = NULL;
+	second_min = INT_MAX;
 	while(node)
 	{
-		count++;
-		node = node ->next;
-	}
-	node = NULL;
-	if(count==3)
-	{
-		node = find_min(head);
-	
-		if(node->value == (*head)->value)
-		{
-			if(node->next->value > node->next->next->value)
-			{
-				count = node->next->value;
-				node->next->value = node->next->next->value;
-				node->next->next->value = count;
-			}	
+		if (node->value < second_min && node != min_node)
+		{	
+			second_min = node->value;
+			second_min_node = node;
 		}
+		node = node->next;
 	}
+	return (second_min_node);
+}
+bool	check_sorted(snode **head)
+{
+	snode *node;
+	node = *head;
+
+	if(!node || !node->next)
+		return (true);
+	while(node->next)
+	{
+		if(node->value > node->next->value)
+			return (false);
+		node = node->next;
+	}
+	return (true);
+}
+void free_stack(snode **head)
+{
+	snode *new_head;
+	while(*head)
+	{
+		new_head = (*head)->next;
+		free(*head);
+		*head = new_head;
+	}
+	*head = NULL;
+}
+void free_all(snode **a, snode **b)
+{
+	free_stack(a);
+	free_stack(b);
+}
+void sort_3_helper(int f, int s, int t, snode **head)
+{
+	if(f < s && s < t)
+		return ;
+	else if(f > s && s < t && f < t)//2 1 3
+		sa(head, true); 
+	else if(f > s && s > t)// 3 2 1
+	{
+		sa(head, true);
+		rra(head, true);	
+	}
+	else if(f > s && s < t && f > t)// 3 1 2
+		ra(head, true);
+	else if(f < s && s > t && f < t)// 1 3 2
+	{
+		sa(head, true);
+		ra(head, true);
+	}
+	else if (f < s && s > t && f > t)// 2 3 1
+		rra(head, true);
+}
+void sort_3(snode **head)
+{
+	int f;
+	int s;
+	int t;
+
+	if (!head || !*head || !(*head)->next || !(*head)->next->next)
+		return;
+	f = (*head)->value;
+	s = (*head)->next->value;
+	t = (*head)->next->next->value;
+	sort_3_helper(f,s,t,head);
 }
 void	find_target_node_helper(snode **heada, snode **headb)
 {
@@ -99,6 +162,10 @@ void	find_target_node_helper(snode **heada, snode **headb)
 			head_a->target_node = find_max(headb);
 		head_a = head_a->next;
 	}
+}
+void sort_5(snode **heada, snode **headb)
+{
+
 }
 
 void	find_target_node(snode **heada, snode **headb)
