@@ -6,11 +6,11 @@
 /*   By: palkhour <palkhour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 15:10:44 by palkhour          #+#    #+#             */
-/*   Updated: 2025/08/28 15:18:11 by palkhour         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:24:21 by palkhour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap_utils.h>
+#include "push_swap_utils.h"
 
 void	pb(t_node **head1, t_node **head2, bool print)
 {
@@ -81,28 +81,4 @@ void	rr(t_node **head1, t_node **head2)
 {
 	rb(head2, false);
 	ra(head1, false);
-}
-
-void	rra(t_node **head1, bool print)
-{
-	t_node	*slast;
-	t_node	*flast;
-
-	if (!head1 || !*head1 || !(*head1)->next)
-		return ;
-	flast = *head1;
-	while (flast->next->next)
-	{
-		flast = flast->next;
-	}
-	slast = flast->next;
-	slast->next = *head1;
-	(*head1)->prev = slast;
-	flast->next = NULL;
-	*head1 = slast;
-	slast->prev = NULL;
-	if (print)
-	{
-		write(1, "rra\n", 4);
-	}
 }

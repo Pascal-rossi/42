@@ -6,7 +6,7 @@
 /*   By: palkhour <palkhour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 13:12:54 by palkhour          #+#    #+#             */
-/*   Updated: 2025/08/28 17:41:26 by palkhour         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:24:00 by palkhour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ t_node	*find_min(t_node **heada)
 
 t_node	*find_second_min(t_node **head)
 {
-	int		min;
 	int		second_min;
 	t_node	*node;
 	t_node	*min_node;
@@ -72,7 +71,6 @@ t_node	*find_second_min(t_node **head)
 
 	node = *head;
 	min_node = find_min(head);
-	min = min_node->value;
 	second_min_node = NULL;
 	second_min = INT_MAX;
 	while (node)

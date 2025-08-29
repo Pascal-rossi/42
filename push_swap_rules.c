@@ -6,7 +6,7 @@
 /*   By: palkhour <palkhour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 12:14:06 by palkhour          #+#    #+#             */
-/*   Updated: 2025/08/28 15:19:12 by palkhour         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:52:07 by palkhour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,11 @@ void	rra(t_node **head1, bool print)
 	{
 		flast = flast->next;
 	}
-	slast = flast->next;
-	flast->next = NULL;
-	slast->prev = NULL;
-	slast->next = *head1;
-	(*head1)->prev = slast;
-	*head1 = slast;
+	slast->next = NULL;
+	flast->next = *head1;
+	flast->prev = NULL;
+	(*head1)->prev = flast;
+	*head1 = flast;
 	if (print)
 	{
 		write(1, "rra\n", 4);

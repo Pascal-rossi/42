@@ -6,7 +6,7 @@
 /*   By: palkhour <palkhour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:43:41 by palkhour          #+#    #+#             */
-/*   Updated: 2025/08/28 17:44:54 by palkhour         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:22:16 by palkhour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	start_the_turk(t_node **head1, t_node **head2)
 {
 	pb(head1, head2, true);
 	if ((*head2)->value > (*head2)->next->value)
-		sb(*head2, true);
+		sb(head2, true);
 }
 
 int	stack_size(t_node **head)
@@ -109,9 +109,9 @@ void	choose_sort(t_node **heada, t_node **headb)
 	else if (len == 3)
 		sort_3(heada);
 	else if (len == 4)
-		sort_4(heada);
+		sort_4(heada, headb);
 	else if (len == 5)
-		sort_5(heada);
+		sort_5(heada, headb);
 	else
 		big_sort(heada, headb);
 }

@@ -6,7 +6,7 @@
 /*   By: palkhour <palkhour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 16:53:02 by palkhour          #+#    #+#             */
-/*   Updated: 2025/08/28 17:47:57 by palkhour         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:45:27 by palkhour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,20 @@ int	count_word(char *c)
 	return (count);
 }
 
-int	main(int args, char **argv)
+int	main(int argc, char **argv)
 {
 	t_node	*a;
 	t_node	*b;
 	int		*arr;
-	int		count;
+	int		size;
 
 	a = NULL;
 	b = NULL;
-	arr = parse_input(args, argv, &count);
-	fill_list(arr, count, &a);
-	choose_sort(&a, &b);
-	print_array(arr, count);
+	arr = parse_input(argc, argv, &size);
+	fill_list(arr, size, &a);
+	if (!is_sorted(&a))
+		choose_sort(&a, &b);
+	free_all(&a, &b);
 	free(arr);
 	return (0);
 }

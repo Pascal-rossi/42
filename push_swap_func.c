@@ -6,15 +6,14 @@
 /*   By: palkhour <palkhour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 11:44:55 by palkhour          #+#    #+#             */
-/*   Updated: 2025/08/28 17:50:02 by palkhour         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:23:30 by palkhour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap_utils.h>
+#include "push_swap_utils.h"
 
 void	copy_unsorted_array(int *source, int *size, int *dest)
 {
-	int	*a;
 	int	i;
 
 	i = 0;
@@ -72,8 +71,4 @@ void	assign_indexes(t_node **head, int *sorted_arr, int *size)
 		i++;
 	}
 	free(sorted_arr);
-}
-void	assign_cost()
-{
-	
 }

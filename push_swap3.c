@@ -6,7 +6,7 @@
 /*   By: palkhour <palkhour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:47:03 by palkhour          #+#    #+#             */
-/*   Updated: 2025/08/28 17:47:24 by palkhour         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:23:03 by palkhour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	*fill_arr(char **tab, int count)
 	i = 0;
 	while (tab[i])
 		i++;
-	free_all(tab, i - 1);
+	freeall(tab, i - 1);
 	return (arr);
 }
 
@@ -71,14 +71,12 @@ void	parse_input_checker(char **argv)
 
 int	*parse_input(int args, char **argv, int *size)
 {
-	int		i;
 	char	**tab;
 	int		*arr;
 	int		count;
 
 	if (args < 2)
 		error();
-	i = 0;
 	count = 0;
 	if (args == 2)
 	{
